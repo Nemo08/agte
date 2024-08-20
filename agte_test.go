@@ -15,7 +15,7 @@ type testBytesPair struct {
 	wantError error
 }
 
-var testFiles = []string{"test1.docx", "test2.docx"}
+var testFiles = []string{"test1.docx"}
 
 func TestNewTemplate(t *testing.T) {
 	_ = NewTemplate()

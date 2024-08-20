@@ -1,4 +1,4 @@
-module agte
+module github.com/Nemo08/agte
 
 go 1.22.5
 
