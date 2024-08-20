@@ -25,6 +25,8 @@ var excludeXmlFiles = []string{
 	"[Content_Types].xml",
 }
 
+type tplOpt func(t *Template)
+
 var (
 	IncorrectTagStructure     = errors.New("error with tag structure")
 	IncorrectBracketStructure = errors.New("error with bracket structure")
@@ -47,12 +49,16 @@ type Template struct {
 }
 
 // NewTemplate creates new template object
-func NewTemplate() *Template {
+func NewTemplate(opts ...tplOpt) *Template {
 	t := Template{}
 	t.xmlFiles = make(map[string]string)
 	t.modifiedXmlFiles = make(map[string]string)
 	t.beginPattern = "{{"
 	t.endPattern = "}}"
+
+	for _, v := range opts {
+		v(&t)
+	}
 
 	return &t
 }
